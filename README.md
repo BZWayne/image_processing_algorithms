@@ -98,4 +98,21 @@ overcome this problem.
 
 ![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/filtering_image/Screen%20Shot%202020-11-21%20at%2012.15.47.png)
 
-## 
+## Sobel Operator
+
+The objective of this task is to find the edges by applying the Sobel Operator to the original image.
+In order to create the Sobel image, two masks were provided.
+```
+Gx = [-1,0,1;-2,0,2;-1,0,1];
+Gy = [-1,-2,-1;0,0,0;1,2,1];
+```
+The algorithm for the Sobel image is the same as the first task. First of all, the original image
+house.jpg is provided, the padding has been applied to the original image in order to ensure that
+the dimensions of an output image is the same as an original image. Secondly, two different
+masks Gx and Gy have been multiplied to input images, so that two different outputs for fx and fy .
+In order to get the final output Sobel image f , the output image with Gx and the output image with
+Gy by the following equation:
+```
+f = √fx2 + fy2
+```
+![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/filtering_image/Screen%20Shot%202020-11-21%20at%2012.15.47.png)
