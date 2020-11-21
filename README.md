@@ -13,10 +13,6 @@ column or row.
 4. Since image is not integer, I have used uint8() function for conversion.
 5. Then new image with iterated rows and columns are equal to interpolated
 size of original image.
-The difficulty I faced during the process were a conversion from 
-oating to
-integer value, implementing the out ranges of image so that it would neglect
-them.
 
 ## Bilinear Interpolation
 The algorithm for Bilinear Interpolations works as follows:
@@ -39,12 +35,7 @@ distance between nearest neighbors. To reuse the algorithm, dene the data
 types separately from the algorithm.
 7. Then new image with iterated rows and columns are equal to interpolated
 size of original image.
-The diculty I faced during the process were calculating the weighted average
-since it took too much time for understanding, implementing the out ranges
-of image so that it would neglect them. The good thing I have recognized is
-exploring new functions as meshgrid() and sub2ind() that simplied the whole
-process.
-As we can see from Figure 1., Nearest Neighbor sharpened the picture due
+As we can see from picture below, Nearest Neighbor sharpened the picture due
 to it just zoomed its size, however, bilinear smoothed the picture. The output
 of both images looks as follows:
 
@@ -73,3 +64,34 @@ oating value into integer value.
 5. Plotted the original and output images, and their difference shown below:
 
 ![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/distance_transform/task2.jpg)
+
+## Masks (3x3) (5x5) (7x7)
+
+The objective of the first task is to implement a filter that changes the intensity values of the
+original image. The mask we apply is the size of NxN, where N is an odd number and flexible for
+changes. The beginning of the mask starts with this mask:
+```
+$ mask = [1 2 3; 4 5 6; 7 8 10]
+```
+In order to change the values of the borders, an input image was produced with black borders.
+The algorithm is as follows: first of all, the mask size was assigned as m and n . Since the mask
+that we apply must not be fixed, mask size is as an example changed to 5x5 and 7x7:
+```
+$ [m, n] = size (mask);
+$ a = (m-1)/2;
+$ b = (n-1)/2;
+```
+In order to create an input image that contains an original image with black borders, the padding
+has been used. The input image dimensions will be 2a and 2b bigger than original. The matrix img
+is the input image with black borders, row and col are rows and columns of the original image:
+```
+$ img = zeros (row+2*a ,col+2*b);
+$ for r = 1:row
+$  for c = 1:col
+$   img(r+a, c+b) = image(r, c);
+$  end
+$ end
+```
+Applying the mask to the input image provided the different intensity values for an output image.
+However, the output image was too bright, so that normalization of output image helped me to
+overcome this problem.
