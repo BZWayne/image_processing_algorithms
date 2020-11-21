@@ -188,4 +188,65 @@ folder with path. In order to convert the frames back to the video, image2video.
 implemented although with the help of video to frame conversion functions as VideoWriter()
 function. The frame of the median filtered video is shown below 
 
-[![Everything Is AWESOME](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/video.mp4)]
+[![Original Video](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/video.mp4)]
+[![Original Video](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/filter_3x3.avi)]
+[![Original Video](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/filter_7x7.avi)]
+
+The screens and difference of those filters shown below:
+
+### Mask 3x3
+![alt_text](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/3x3.jpg)
+
+As we can observe, 3x3 median filter is not an effective way to remove the noise. That is why the
+region of median filtered matrix is flexible for any other odd numbers as shown in the previous
+tasks. As an example, the dimensions of interest changed to 7x7 that removed the noise by
+smoothing the image as shown.
+
+### Mask 7x7
+![alt_text](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/7x7.jpg)
+
+## Hough Transform
+
+The objective of this task is to detect the lines using the modified Hough Transform algorithm. As
+an original image house.jpg has been provided. Since the Sobel image, the Sobel image of y, and
+the Sobel image of x are found in the second task, it was much convenient to find the gradient for
+each pixel using Sobel edge detector. The range of 
+```
+Θ = [0 : 180]
+```
+
+and the range
+
+```
+ρ = [0 : 2 * distance]
+% Combined masks
+f = sqrt ((fx).^2 + (fy).^2);
+% Applying Hough Transform
+[yy, xx] = size (f);
+thetas = atan (fy./ (fx+1*10^-6));
+dist = round ( sqrt (yy^2 + xx^2));
+H = zeros (181, 2*dist);
+```
+
+where fx and fy are Sobel images of x and y respectively, thetas is the gradient of each x and y ,
+dist is the maximum distance, H is the hough space.
+The algorithm that has been provided was implemented, and the output of the hough space is
+shown below
+
+![alt_text](https://github.com/BZWayne/image_processing_algorithms/blob/main/hough_transform/Hough_space.jpg)
+
+The y-axis are the θ degrees and the x-axis are values ρ. From this hough
+space, the greater number of votes must be extracted by using the following line of code.
+```
+n = max(max(H));
+```
+In order to draw lines in the original image following equation has been used:
+```
+y = (ρ − xcosθ)/sinθ
+```
+so that iterating via each θ , ρ , and x values, it can be possible to get an output value that shows
+the position of the output matrix image where it must be white. Unfortunately, the following
+algorithm lines drawn are too thin, and cannot be recognized by eyes. The visual representation of
+the images looks as follows
+
+![alt_text](https://github.com/BZWayne/image_processing_algorithms/blob/main/hough_transform/task4.jpg)
