@@ -118,5 +118,22 @@ f = √fx2 + fy2
 ![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/finding_edges/task2.jpg)
 
 Adding some threshold, significantly changes the image:
-
+Applying the thresholding to the output images changed the intensity values, so the visual
+representation of the images. The threshold value is 150. If every pixel intensity is higher than this
+value is assigned as 255, otherwise every pixel values are 0.
+```
+% Combined masks
+f = sqrt ((fx).^2 + (fy).^2);
+   for r = 1:row
+     for c = 1:col
+       if f(r,c) > thresh
+         f(r,c) = 255;
+       else
+         f(r,c) = 0;
+      end
+   end
+end
+```
 ![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/finding_edges/task2_with_thresh.jpg)
+
+## 
