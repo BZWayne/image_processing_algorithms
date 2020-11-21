@@ -1,0 +1,6 @@
+1) output = digitrec(input)    
+	input - image matrix (obtained from imread())
+	mask - digit integer found in image. In case of failure: string "Image not recognised".
+2) chains	
+	Data of chains of digits dataset. Required for digitrec.m
+Input images can be found in Dataset folder, please use it during digitrec testing.
