@@ -115,4 +115,8 @@ Gy by the following equation:
 ```
 f = √fx2 + fy2
 ```
-![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/filtering_image/Screen%20Shot%202020-11-21%20at%2012.15.47.png)
+![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/finding_edges/task2.jpg)
+
+Adding some threshold, significantly changes the image:
+
+![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/finding_edges/task2_with_thresh.jpg)
