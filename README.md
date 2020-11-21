@@ -136,4 +136,38 @@ end
 ```
 ![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/finding_edges/task2_with_thresh.jpg)
 
-## 
+As we can observe two different final Sobel output images, their visual outputs do differ with
+intensity values, so that Sobel image with thresholding was sharpened the edges rather than
+without thresholding which looks smoother.
+
+## Remove Noise
+
+The objective of this task is to use a median filter to remove noise from the original image. As
+input values video.mp4 and donald.jpg have been provided. In order to check the median filter
+algorithm, I have used donald.jpg picture. Since this image without noise, the following line of
+code has been used to provide a noise with 0.05 density.
+
+```
+% Upload an image and apply a noise to the image
+image = imread( 'donald.jpg' );
+image = rgb2gray(image);
+image = imnoise(image, 'salt & pepper' ,0.05);
+```
+
+The new matrix has been assigned as pixel. In order to have the same size as an original image
+the padding has been applied. In order to find the median value of a matrix, the matrix has been
+changed to the array, and median found with the help of median() function
+
+```
+for r = 1:row
+   for c = 1:col
+      A = img(r:r+m-1, c:c+n-1);
+      A = reshape (A. ',1,[]);
+      pixel(r,c) = median(A);
+   end
+end
+```
+The matrix img is the input image with black borders, row and col are rows and columns of the
+original image. The visual representation of the images shown below:
+
+[!alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/Screen%20Shot%202020-11-21%20at%2012.26.41.png)
