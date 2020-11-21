@@ -171,3 +171,21 @@ The matrix img is the input image with black borders, row and col are rows and c
 original image. The visual representation of the images shown below:
 
 ![alt_text](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/Screen%20Shot%202020-11-21%20at%2012.26.41.png)
+
+The same technique has been used to better the quality of the video provided. Each frame has
+been taken with the help of video to frame conversion functions.
+```
+% Upload a video
+video = VideoReader( 'video.mp4' );
+get(video);
+nFrames = video.NumberOfFrames;
+col = video.Width;
+row = video.Height;
+```
+
+Looping the frames, a median filter applied to each image frame, and saved 125 frames in the
+folder with path. In order to convert the frames back to the video, image2video.m has been
+implemented although with the help of video to frame conversion functions as VideoWriter()
+function. The frame of the median filtered video is shown below 
+
+[![Everything Is AWESOME](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/video.mp4)]
