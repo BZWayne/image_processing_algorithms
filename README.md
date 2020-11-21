@@ -189,8 +189,8 @@ implemented although with the help of video to frame conversion functions as Vid
 function. The frame of the median filtered video is shown below 
 
 [![Original Video](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/video.mp4)]
-[![Original Video](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/filter_3x3.avi)]
-[![Original Video](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/filter_7x7.avi)]
+[![Filter 3x3](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/filter_3x3.avi)]
+[![Filter 7x7](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/filter_7x7.avi)]
 
 The screens and difference of those filters shown below:
 
@@ -250,3 +250,30 @@ algorithm lines drawn are too thin, and cannot be recognized by eyes. The visual
 the images looks as follows
 
 ![alt_text](https://github.com/BZWayne/image_processing_algorithms/blob/main/hough_transform/task4.jpg)
+
+## Digit Recognition
+
+Digit recognition is one the basic challenges in computer vision and image processing. The
+main objective of the homework III is to recognize digits from the given dataset, so the digit must
+be recognized from modified images. The implementation of the task is demonstrated in
+digitrec.m script file, which is written as a function. The input is an rgb image matrix from a
+dataset provided with the script, and output is an integer found in the digit. A second chains.m
+script file contains a dataset of chain codes of digits for comparison that are going to be loaded
+in digitrec.m for further use. The dataset of Arial font digits was prepared using screenshot tools
+and contains all variations of 48 and 72 font size digits.
+
+Digit recognition is implemented by using chain codes based on 8-connectivity. We chose this
+method of boundary representation because we do not involve rotation of digits into account,
+which simplifies digit recognition. The boundary segmentation was done using edge() function.
+To decrease noise and to close gaps in the boundary we use closing morphological operation
+using erosion and dilation. We encountered an issue where 1 and 5 digits’ boundaries from
+edge() contained a gap, which was resolved using closing on the digit before applying edge()
+and closing on the boundary itself. The chain code starts at the most top and most left pixel in
+the boundary. The first pixel is consistently being picked as a first whenever we move the digit in
+the image. To avoid a problem, we store the coordinates of a first pixel in the chain to end the
+chain. Another issue we encountered is that after closings, several digits (especially 3 and 5)
+will have several extra pixels in the boundary, which are not being recorded in the chain as they
+are not needed for the boundary. This did not bring any problems and they are consistently
+created whenever a digit is placed in the image. After obtaining a chain code, we compare it
+with the provided dataset of chain codes using an order of the shape and chain code itself.
+Several shapes have the same order which was taken into consideration.
