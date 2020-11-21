@@ -170,4 +170,4 @@ end
 The matrix img is the input image with black borders, row and col are rows and columns of the
 original image. The visual representation of the images shown below:
 
-[!alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/Screen%20Shot%202020-11-21%20at%2012.26.41.png)
+[!alt_text](https://github.com/BZWayne/image_processing_algorithms/blob/main/remove_noise/Screen%20Shot%202020-11-21%20at%2012.26.41.png)
