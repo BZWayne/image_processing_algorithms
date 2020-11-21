@@ -95,3 +95,7 @@ $ end
 Applying the mask to the input image provided the different intensity values for an output image.
 However, the output image was too bright, so that normalization of output image helped me to
 overcome this problem.
+
+![alt text](https://github.com/BZWayne/image_processing_algorithms/blob/main/filtering_image/Screen%20Shot%202020-11-21%20at%2012.15.47.png)
+
+## 
